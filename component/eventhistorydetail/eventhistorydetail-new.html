@@ -1,0 +1,111 @@
+<div class="row" style="height:70px;">
+    <div>
+        <div class="row">
+            <div class="col-md-3" style="padding-top:15px;">
+                <label class="custom_label" style="color:grey;">Select Vehicle</label>
+                <select id="selectGroup" class="form-control" style="height:25px;color:lightgrey;font-size:11px;" name="groupList"
+                    ng-model="data.selectedvehicle" ng-change="fetchDevicelist(groupname)">
+                    <option ng-if="deviceList.length" value="" selected disabled
+                        class="disable_select">-- Select Vehicle - -</option>
+                    <option ng-if="!deviceList.length" selected disabled>No
+                        Vehicles Available</option>
+                    <option ng-repeat="v in deviceList"
+                        value="{{ v.vehicle_num }}">{{v.vehicle_num}}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <div class='input-group date SpddateB' id='eventStartTimePic' ng-click="openCalS()">
+                    <input type='text' class="form-control SpddateNB" id="eventStartTime" 
+                        readonly="readonly" placeholder="Select Start Date" /> <span
+                        class="input-group-addon SpddateNB"> <span
+                        class="glyphicon glyphicon-calendar"> </span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class='input-group date SpddateB' id='eventEndTimePic' ng-click="openCalE()">
+                    <input type='text' class="form-control SpddateNB" id="eventEndTime" 
+                        readonly="readonly" placeholder="Select End Date" /> <span
+                        class="input-group-addon SpddateNB"> <span
+                        class="glyphicon glyphicon-calendar"> </span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn" ng-click="getEventHistoryDetails()">Submit</button>
+            </div>
+            <div class="col-md-1" style="padding-top:15px;">
+                <img src="img/notification.png" style="height: 25px;float:right;">
+            </div>
+            <div class="col-md-2" style="padding-top:15px;">
+                <label>My Account</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" id="clearTextGroup">
+                <!-- <select id="selectGroup" class="form-control" style="height:25px;color:lightgrey;font-size:11px;" name="groupList"
+                    ng-model="data.selectedvehicle" ng-change="fetchDevicelist(groupname)">
+                    <option ng-if="deviceList.length" value="" selected disabled
+                        class="disable_select">-- Select Vehicle - -</option>
+                    <option ng-if="!deviceList.length" selected disabled>No
+                        Vehicles Available</option>
+                    <option ng-repeat="v in deviceList"
+                        value="{{ v.vehicle_num }}">{{v.vehicle_num}}</option>
+                </select>       -->
+            </div>
+            <div class="col-md-2">
+                <!-- <div class='input-group date SpddateB' id='trvelRouteHstTimePic' ng-click="openCal()">
+                    <input type='text' class="form-control SpddateNB" id="trvelRouteHstTime" 
+                        readonly="readonly" placeholder="Select Date" /> <span
+                        class="input-group-addon SpddateNB"> <span
+                        class="glyphicon glyphicon-calendar"> </span>
+                    </span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="padding:0px;">
+        <div>
+            <div class="row" ng-repeat="event in eventHistoryValues track by $index" style="padding-top: 10px;border-bottom: solid 1px lightgrey;border-top: solid 1px lightgrey;padding-bottom: 10px;">
+                <div class="col-md-1">
+                    <img style="width:40px;" ng-src="{{event.alarm_type=='0' ? 'img/eventH/panic.png' :
+                        (event.alarm_type=='1' ? 'img/eventH/sim-tamper.png' :
+                        (event.alarm_type=='2' ? 'img/eventH/tamper-top.png' :
+                        (event.alarm_type=='3' ? 'img/eventH/battery.png' :
+                        (event.alarm_type=='4' ? 'img/eventH/overspeed.png' :
+                        (event.alarm_type=='5' ? 'img/eventH/geofence.png' :
+                        (event.alarm_type=='6' ? 'img/eventH/sanity.png' :
+                        (event.alarm_type=='7' ? 'img/eventH/warning.png' :
+                        (event.alarm_type=='8' ? 'img/eventH/theft.png' :
+                        (event.alarm_type=='9' ? 'img/eventH/sim-tamper.png' :
+                        (event.alarm_type=='10' ? 'img/eventH/invalid.png' : 'img/eventH/invalid.png'))))))))))}}">
+                </div>
+                <div class="col-md-2">
+                    <span ng-if="event.alarm_type=='0'">Panic</span>
+                    <span ng-if="event.alarm_type=='1'">Tamper Sim</span>
+                    <span ng-if="event.alarm_type=='2'">Tamper Top</span>
+                    <span ng-if="event.alarm_type=='3'">Battery Low</span>
+                    <span ng-if="event.alarm_type=='4'">Overspeed</span>
+                    <span ng-if="event.alarm_type=='5'">Geofence</span>
+                    <span ng-if="event.alarm_type=='6'">Sanity alarm</span>
+                    <span ng-if="event.alarm_type=='7'">Connection to tracker interrupted</span>
+                    <span ng-if="event.alarm_type=='8'">Vehicle Moved / Theft</span>
+                    <span ng-if="event.alarm_type=='9'">Tracker sim changed</span>
+                    <span ng-if="event.alarm_type=='10'">Warning</span>
+                </div>
+                <div class="col-md-1">
+                    {{event.Velocity}}KmpH
+                </div>
+                <div class="col-md-2">
+                    <!-- <span ng-bind="locationNameWords[{{$index}}]"></span> -->
+                    <button class="btn" ng-click="getLocation(event.lat,event.long)">Location</button>
+                </div>
+                <div class="col-md-2">
+                    <span>{{event.ts | date:' HH:mm, d MMMM '}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

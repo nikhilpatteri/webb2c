@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html ng-app="bats">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+  <!-- <link href="lib/ionic/css/ionic.css" rel="stylesheet"> -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <script src="lib/angular/angular.js"></script>
+  <!-- <script src="lib/ionic/js/angular-ui/angular-ui-router.min.js"></script>  -->
+  <script src="lib/angular/angular-route.min.js"></script>
+  <!-- <script src="lib/ionic/js/ionic.bundle.js"></script> -->
+
+  <!--cordova script (this will be a 404 during development) -->
+  <!-- <script src="cordova.js"></script> -->
+  
+  <!--<script src="lib/ionic/js/angular/angular.js"></script>-->
+
+  <!-- custom css -->
+  <link href="component/start/start.css" rel="stylesheet">
+  <link href="component/login/login.css" rel="stylesheet">
+  <link href="component/signupstep1/signupstep1.css" rel="stylesheet">
+  <link href="component/signupstep2/signupstep2.css" rel="stylesheet">
+  <link href="component/managetracker/managetracker.css" rel="stylesheet">
+  <link href="component/updatemarkerdetails/updatemarkerdetails.css" rel="stylesheet">
+  <link href="component/replayroute/replayroute.css" rel="stylesheet">
+  <link href="component/eventhistorydetail/eventhistorydetail.css" rel="stylesheet">
+  <link href="component/navigation/navigation.css" rel="stylesheet">
+  <link href="component/forgotpassword/forgotpassword.css" rel="stylesheet">
+  <link href="component/vehiclestatistic/vehiclestatistics.css" rel="stylesheet">
+  <link href="component/eventfilter/eventfilter.css" rel="stylesheet">
+  <link href="component/livetrackingdetails/livetrackingdetails.css" rel="stylesheet">
+  <link href="component/livetrackingdevices/livetrackingdevices.css" rel="stylesheet">
+  <link href="component/replayroutedetail/replayroutedetail.css" rel="stylesheet">
+  <link href="component/notification/notification.css" rel="stylesheet">
+  <link href="component/geofence/geofence.css" rel="stylesheet">
+ 
+  
+  <!--third part css-->
+  <link href="assets/tooltipster/tooltipster.min.css" rel="stylesheet">
+  <link href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/angular-material.min.css" rel="stylesheet">
+  <link href="assets/font-awesome/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/datepicker/bootstrap-datetimepicker.css" rel="stylesheet">
+  <link href="assets/sweetalert/sweetalert.css" rel="stylesheet" >
+  <!-- <link href="assets/ion-place-autocomplete/ion-place-autocomplete.css" rel="stylesheet"> -->
+  <!-- <link href="assets/ion-datetime-picker/ion-datetime-picker.min.css" rel="stylesheet"> -->
+ 
+  <!--third part js-->
+  <script src="assets/jquery/jquery-1.11.2.min.js"></script>
+  <script src="assets/tooltipster/jquery.tooltipster.js"></script>
+  <script src="assets/spinner/angular-loading-spinner.js"></script>
+  <script src="assets/spinner/angular-spinner.min.js"></script>
+  <script src="assets/spinner/spin.min.js"></script>
+  <script src="assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="assets/underscore/underscore.min.js"></script>
+  <script src="assets/underscore/angular-underscore-module.js"></script>
+  <!-- <script src="assets/ion-datetime-picker/ion-datetime-picker.min.js"></script> -->
+  <!-- <script src="assets/ngCordova/ng-cordova.js"></script>
+  <script src="assets/ngCordova/ng-cordova.min.js"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyC2n_nKwxL85mrmKd5FLvZfAy8hFs1dJNE&libraries=places,geometry,drawing"></script>
+  <!--<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es&sensor=true&libraries=places,geometry"></script>-->
+  <script src="lib/ionic/js/angular/angularjs-google-maps.js"></script>
+  <!-- <script src="assets/ion-place-autocomplete/ion-place-autocomplete.js"></script>
+  <script src="lib/ionic-toast/dist/ionic-toast.bundle.min.js"></script> -->
+  <script src="assets/moment/moment.min.js"></script>
+  <script src="assets/highchart/highcharts.min.js"></script>
+  <script src="assets/highchart/highcharts-more.min.js"></script>
+  <script src="assets/highchart/solid-gauge.min.js"></script>
+  <script src="assets/round-progressbar/roundProgress.min.js"></script>
+  <script src='assets/datepicker/bootstrap-datetimepicker.js'></script>
+  <script src="assets/sweetalert/sweetalert-dev.js"></script>
+ <!--// <script src="lib/angular-gm/angularjs-google-maps.js"></script>-->
+
+
+  <!-- core js -->
+  <script src="js/BatsApp.js"></script>
+  <script src="js/BatsConst.js"></script>
+  <script src="js/BatsConfig.js"></script>
+  <script src="js/BatsServices.js"></script>
+  <script src="js/BatsInterceptor.js"></script>
+  <script src="js/BatsControllers.js"></script>
+  <script src="js/BatsFilters.js"></script>
+  <script src="js/BatsFactories.js"></script>
+  <script src="js/BatsDirective.js"></script>
+  <script src="js/Factories/UtilsFactories.js"></script>
+  <script src="js/Factories/ChartFactories.js"></script>
+  <script src="js/BatsDirective.js"></script>
+  <script src="js/Directive/actionCardDirective.js"></script>
+  <script src="js/Directive/commonDirective.js"></script>
+
+
+  <!-- component js -->
+  <script src="component/login/login.js"></script>
+  <script src="component/start/start.js"></script>
+  <script src="component/livetracking/livetracking.js"></script>
+  <script src="component/livetrackingdetails/livetrackingdetails.js"></script>
+  <script src="component/forgotpassword/forgotpassword.js"></script>
+  <script src="component/changepassword/changepassword.js"></script>
+  <script src="component/signupstep1/signupstep1.js"></script>
+  <script src="component/signupstep2/signupstep2.js"></script>
+  <script src="component/managetracker/managetracker.js"></script>
+  <script src="component/replayroute/replayroute.js"></script>
+  <script src="component/navigation/navigation.js"></script>
+  <script src="component/eventhistory/eventhistory.js"></script>
+   <script src="component/eventfilter/eventfilter.js"></script>
+  <script src="component/eventhistorydetail/eventhistorydetail.js"></script>
+  <script src="component/vehiclestatistic/vehiclestatistics.js"></script>
+  <script src="component/vehiclestatisticdetail/vehiclestatisticdetail.js"></script>
+  <script src="component/updatemarkerdetails/updatemarkerdetails.js"></script>
+  <script src="component/managemember/managemember.js"></script>
+  <script src="component/addmember/addmember.js"></script>
+  <script src="component/report/report.js"></script>
+  <script src="component/livetrackingdevices/livetrackingdevices.js"></script>
+  <script src="component/replayroutedetail/replayroutedetail.js"></script>
+  <script src="component/notification/notification.js"></script>
+   <script src="component/geofence/geofence.js"></script>
+  <script src="component/notificationbell/notificationbell.js"></script>
+    <style>
+        .row {
+            margin-right: 0px !important;
+            margin-left: 0px !important; 
+        }
+        .text-box{
+            border: 1px solid #e7e7e7 !important;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        .top-font{
+            font-size:12px;
+            font-weight:bold;
+        }
+        .bottom-font{
+            font-size:12px;
+            color:grey;
+        }
+        .div-padding{
+            padding-top:10px;
+            padding-left:10px;
+            padding-right:10px;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="BatsCtrl">
+    <!-- <div class="" us-spinner="{radius:0, width:0, length: 0}"></div> -->
+    <!-- <div class="row">
+        <div class="col-md-2">
+            <div>Menu</div>
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                Header part
+            </div>
+            <div ui-view ></div>
+        </div>
+    </div> -->
+    <!-- <div ui-view ></div> -->
+    <div ng-if="!loggedIn">
+        <div ng-controller="LoginCtrl">
+            <div class="row top-font" style="height: 60px;padding-top:20px;padding-bottom:20px;border-bottom:1px solid lightgrey;">
+                <div class="col-md-5" style="text-align:center;">
+                    <img src="img/logo-login.png" width="100px;">
+                </div>
+                <form name="loginForm" novalidate ng-submit="gotoHome(data, loginForm)">
+                    <div class="col-md-2">
+                        <input type="text" ng-model="data.userid" class="text-box" placeholder="UserID" style="float:left;">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" ng-model="data.password" class="text-box" placeholder="Password" style="float:left;">
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn" style="background-color:#00ba88;color:white;height:22px;width:100px;padding:0px;">Login</button>
+                    </div>
+                    <div class="col-md-2">
+                        <span>Forgot Password?</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- <div ng-if="loggedIn">
+            <div class="row top-font" style="height: 60px;padding-top:20px;padding-bottom:20px;border-bottom:1px solid lightgrey;">
+                <div class="col-md-5" style="text-align:center;">
+                    <img src="img/logo-login.png" width="100px;">
+                </div>
+            </div>
+        </div>     -->
+        <div class="row" style="text-align:center;">
+            <div class="col-md-offset-4 col-md-4" >
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8 col-md-offset-2" style="box-shadow: 1px 1px 15px grey;margin-top:50px;border: 1px solid lightgrey;">
+                        <div style="padding:20px 50px 0px 50px;">
+                            <span style="font-weight:bold;font-size:14px;">TRACK YOUR WHEELS ON YOUR PALM</span>
+                        </div>
+                        <div>
+                            <span style="color:grey;font-size:10px;">Register your account</span>
+                        </div>
+                        <form class="bottom-font">
+                            <div class="div-padding">
+                                <span class="pull-left">First Name</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding">
+                                <span class="pull-left">Last Name</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding">
+                                <span class="pull-left">Email</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding">
+                                <span class="pull-left">Phone Number</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding">
+                                <span class="pull-left">Password</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding">
+                                <span class="pull-left">Country</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding">
+                                <span class="pull-left">State</span>
+                                <input class="text-box" type="text">
+                            </div>
+                            <div class="div-padding" style="padding-bottom:20px;padding-top:20px;">
+                                <button class="btn btn-original" style="width:100%;height:25px;color:white;background-color:#00ba88;padding:0px;">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- below code is for after login -->
+    <div ng-if="loggedIn">
+        <div class="row">
+            <div class="col-md-2" style="border-right:1px solid lightgrey;height:100vh;padding-left:40px;">
+                <div>
+                    <div style="padding-top: 10px;padding-bottom: 50px;margin-left:-10px;">
+                        <img src="img/logo-login.png" style="width:130px;">
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web">
+                            <img src="img/menu/live_tracking.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Live Tracking</label>
+                        </a>
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web/replay">
+                            <img src="img/menu/replay.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Replay Route</label>
+                        </a>
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web/events">
+                            <img src="img/menu/event_history.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Events History</label>
+                        </a>
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web/statistics">
+                            <img src="img/menu/vehicle_statitics.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Vehicle Statistics</label>
+                        </a>
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web/reports">
+                            <img src="img/menu/reports.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Reports</label>
+                        </a>
+                    </div>
+                    <div style="padding-top: 20px;font-size: 10px;margin-left: -20px;padding-bottom: 20px;color: grey;">Settings</div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web/member">
+                            <img src="img/menu/manage_member.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Manage Member</label>
+                        </a>
+                    </div>
+                    <div style="padding-bottom: 10px;">
+                        <a href="/b2c_web/device">
+                            <img src="img/menu/manage_device.png" width="20px">
+                            <label style="color: grey;padding-left: 20px;font-size: 12px;">Manage Device</label>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10" style="padding:0px;">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

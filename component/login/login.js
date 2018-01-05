@@ -1,0 +1,87 @@
+angular.module('login', [])
+    .controller('LoginCtrl', function ($scope, BatsServices, Constants,
+        $timeout, PageConfig, $rootScope) {
+            $rootScope.loggedIn = false;
+        if (localStorage.getItem(Constants.accessToken)) {
+            localStorage.removeItem(Constants.accessToken)
+        }
+
+        if (localStorage.getItem(Constants.ACCESS_TYPE)) {
+            localStorage.removeItem(Constants.ACCESS_TYPE)
+        }
+        if (localStorage.getItem(Constants.USER_VO)) {
+            localStorage.removeItem(Constants.USER_VO)
+        }
+
+        $scope.Validate = false;
+
+        $scope.gotoHome = function (data, form) {
+
+            console.log("inside login: "+data);
+
+            // var connectionType = $cordovaNetwork.getNetwork();
+            // if (connectionType != 'none') {
+                // console.log("connection type: " + connectionType);
+                $scope.Validate = true;
+                var userId = new String(data.userid);
+                var inputParam = { 'user_id': userId, 'password': data.password }
+                BatsServices.login(inputParam).success(function (response) {
+                    localStorage.setItem(Constants.accessToken, response.token);
+                    var type = response.token.charAt(9);
+                    if (type == 0) { type = "factory"; }
+                    else if (type == 1) { type = "admin"; }
+                    else if (type == 2) { type = "member"; }
+                    // $rootScope.callNotification();
+                    localStorage.setItem(Constants.ACCESS_TYPE, type);
+                    localStorage.setItem(Constants.USER_VO, JSON.stringify(response));
+                    localStorage.setItem(Constants.PARKING_MODE, true);
+
+                    if (localStorage.getItem(Constants.ACCESS_TYPE) != null) {
+                        $rootScope.accessType = localStorage.getItem(Constants.ACCESS_TYPE);
+                    }
+                    if (localStorage.getItem(Constants.USER_VO) != null) {
+                        $rootScope.userName = JSON.parse(localStorage.getItem(Constants.USER_VO)).firstname;
+                        $rootScope.email = JSON.parse(localStorage.getItem(Constants.USER_VO)).email;
+                    }
+                    token_login = window.localStorage.getItem("token");
+                    // var query_insert = "INSERT INTO Token (token) VALUES (?)";
+                    // $cordovaSQLite.execute(db, query_insert, [token_login]).then(function (res) {
+                    //     console.log("inserting token into db from login.js");
+                        // $state.go(PageConfig.MANAGE_TRACKER);
+                        console.log("value of loggedin: "+$rootScope.loggedIn);
+                        $rootScope.loggedIn = true;
+                        console.log("value of loggedin: "+$rootScope.loggedIn);
+                        // $state.go(PageConfig.LIVE_TRACKING);
+                        // $scope.$apply();
+                        
+                    // }, function (err) {
+                    //     // alert("Insert Token in DB err -> " +
+                    //     // JSON.stringify(err));
+                    // });
+                    // console.log("response: "+response);
+                    // $state.go(PageConfig.MANAGE_TRACKER);
+                }).error(function (error) {
+                    // console.log("resposne in error: "+error);
+                    if(error=='Unauthorized'){
+                        // ionicToast.show(error , Constants.TOST_POSITION, false, Constants.TIME_INTERVAL);
+                    }else if(error.err == 'Origin Server returned 504 Status') {
+                        // ionicToast.show('Internet is very slow', Constants.TOST_POSITION, false, Constants.TIME_INTERVAL);
+                    }
+                    else {
+                        // ionicToast.show(error.err , Constants.TOST_POSITION, false, Constants.TIME_INTERVAL);
+                    }// ionicToast.show(error, Constants.TOST_POSITION, false, Constants.TIME_INTERVAL);
+                })
+            // } else {
+                // var alertPopup = $ionicPopup.alert({
+                //     title: 'No Internet Connection',
+                //     template: '<div class="pwdSuccessPopup">Sorry, no Internet connectivity detected. Please reconnect and try again.</div>'
+                // });
+            // }
+        }
+
+        $scope.gotoFogotPassword = function () {
+            // $state.go(PageConfig.FORGOT_PASSWORD);
+        }
+
+
+    })

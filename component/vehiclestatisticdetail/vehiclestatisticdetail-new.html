@@ -1,0 +1,128 @@
+<div class="row" style="height:70px;">
+    <div>
+        <div class="row">
+            <div class="col-md-3" style="padding-top:15px;">
+                <label class="custom_label" style="color:grey;">Select Vehicle</label>
+                <select id="selectGroup" class="form-control" style="height:25px;color:lightgrey;font-size:11px;" name="groupList"
+                    ng-model="data.selectedvehicle" ng-change="fetchDevicelist(groupname)">
+                    <option ng-if="deviceList.length" value="" selected disabled
+                        class="disable_select">-- Select Vehicle - -</option>
+                    <option ng-if="!deviceList.length" selected disabled>No
+                        Vehicles Available</option>
+                    <option ng-repeat="v in deviceList"
+                        value="{{ v.vehicle_num }}">{{v.vehicle_num}}</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <div class='input-group date SpddateB' id='eventStartTimePic' ng-click="openCalS()">
+                    <input type='text' class="form-control SpddateNB" id="eventStartTime" 
+                        readonly="readonly" placeholder="Select Start Date" /> <span
+                        class="input-group-addon SpddateNB"> <span
+                        class="glyphicon glyphicon-calendar"> </span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class='input-group date SpddateB' id='eventEndTimePic' ng-click="openCalE()">
+                    <input type='text' class="form-control SpddateNB" id="eventEndTime" 
+                        readonly="readonly" placeholder="Select End Date" /> <span
+                        class="input-group-addon SpddateNB"> <span
+                        class="glyphicon glyphicon-calendar"> </span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn" ng-click="gotoVehicleStatistics()">Submit</button>
+            </div>
+            <div class="col-md-1" style="padding-top:15px;">
+                <img src="img/notification.png" style="height: 25px;float:right;">
+            </div>
+            <div class="col-md-2" style="padding-top:15px;">
+                <label>My Account</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="padding:0px;">
+        <div class="row">
+            <div class="col-md-4" style="text-align:center;background-color:orange;height: 240px;">
+                <img src="img/car-icon-1.png" style="width:40%;padding-top: 50px;">
+            </div>
+            <div class="col-md-3" style="text-align:center;background-color:gainsboro;height: 240px;">
+                <img src="img/statitics-icons_0004_average.png" style="width:40%;padding-top: 50px;">
+                <p>{{statisticsDetails.avg_speed}} KmpH</p>
+                <p>Avg speed</p>
+            </div>
+            <div class="col-md-2" style="padding:0px;background-color:gainsboro;">
+               <div style="width:100%;height:80px;border-left:solid 2px white;">
+                   <div class="row">
+                       <div class="col-md-6">
+                            <img src="img/statitics-icons_0003_max.png" style="width: 50px;padding-top: 15px;">
+                       </div>
+                       <div class="col-md-6">
+                           <p>{{statisticsDetails.max_speed}} KmpH</p>
+                           <p>Max speed</p>
+                       </div>
+                </div>
+               </div>
+               <div style="width:100%;height:80px;border-left:solid 2px white;border-top:solid 2px white;">
+                   <div class="row">
+                        <div class="col-md-6">
+                            <img src="img/statitics-icons_0002_min.png" style="width: 50px;padding-top: 15px;">
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{statisticsDetails.min_speed}} KmpH</p>
+                            <p>Min speed</p>
+                        </div>
+                   </div>
+                    
+               </div>
+               <div style="width:100%;height:80px;border-left:solid 2px white;border-top:solid 2px white;">
+                   <div class="row">
+                        <div class="col-md-6">
+                            <img src="img/statitics-icons_0001_speedometer.png" style="width: 50px;padding-top: 15px;">
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{statisticsDetails.speed_limit}} KmpH</p>
+                            <p>Speed Limit</p>
+                        </div>
+                   </div>
+                    
+               </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="height:100px;background-color:black;color:white;border-top: solid 2px white;">
+                <div class="row" style="text-align:center;padding-top: 25px;">
+                    <div class="col-md-4">
+                            <span style="font-size: 12px;font-weight: bold;">{{statisticsDetails.vehicle_name}}</span>
+                            <p style="font-size: 10px;">Vehicle</p>
+                        
+                    </div>
+                    <div class="col-md-4">
+                            <span style="font-size: 12px;font-weight: bold;">{{statisticsDetails.vehicle_num}}</span>
+                            <p style="font-size: 10px;">Vehicle Number</p>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <span style="font-size: 12px;font-weight: bold;">{{statisticsDetails.devid}}</span>
+                        <p style="font-size: 10px;">Device ID</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" style="background-color:gainsboro;height:100px;border-top: solid 2px white;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="img/statitics-icons_0000_distance.png" style="width: 100px;">
+                    </div>
+                    <div class="col-md-8">
+                        <p>{{statisticsDetails.distance}} Kms</p>
+                        <p>Distance Covered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

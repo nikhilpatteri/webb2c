@@ -1,0 +1,41 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+        <div>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title ng-click="gotoLivetrackingDevice()">Select Device<i class="ion-chevron-down ltSelectDevArr"></i></ion-nav-title>
+    <ion-nav-buttons side="right">
+        <img class="batsIcon acEditIcon" ng-disabled="send_act_SMS" ng-if="parking_inavtive" ng-click="send_act_SMS || sendSMS_Active()"  src="img/menu/parked_inactive.png" />
+         <img class="batsIcon acEditIcon" ng-disabled="send_dact_SMS" ng-if="parking_activate" ng-click="send_dact_SMS || sendSMS_Deactive()"  src="img/menu/parked.png" />
+         <div  ng-include="'component/notificationbell/notificationbell.html'"></div>
+        <!--<button class="button button-icon button-clear " ng-click="gotoFilter()" ><img class="filterWidth" src="img/filter.png"></button> -->
+        <!--<a class="button button-icon button-clear " href="#/bats/notification"><img class="filterWidth" src="img/notification.png">
+            <span class="badge badge-dark badgePosition" ng-class="{'badgePositionHide':count=='0','badgePosition':count!='0'}">{{count}}</span>
+        </a>-->
+    </ion-nav-buttons>
+    <ion-content class="hmCards" scroll="false" ng-init="init()">
+        <div id="map" ng-style="mapHeight" ></div>
+        <span class="liveTrackreCenter" ng-click="reCenterDevice()" ng-hide="singleDeviceZoomed">
+                <i class="ion-android-send liveTrackRecenterA" ></i>RESUME UPDATE
+            </span>
+        <!--<span class="liveTrackreCenter liveTrackParking" >Parking<i class="ion-android-send liveTrackRecenterA"></i></span>-->
+        <div class="row liveTrackBelowbtn"  ng-click="ab(showArrow)">
+            <div class="col col-30 col-center">
+                <div class="ltkmdetail">
+                    <span style="font-size:21px;">{{speedSpeedOmeter}}</span><span style="font-size:14px;padding-left:3px;">KmpH</span></div>
+            </div>
+            <div class="col col-60 col-center">
+                <div>
+                    <p class="ltstatusUpTxt">{{vehicleName}}</p>
+                    <span class="ltwrap_type" ng-style="{{getColorBack(divcolor)}}"></span>
+                    <p class="ltstatusTxt">{{barTxt}}</p>
+                </div>
+            </div>
+            <div class="col col-10 col-center">
+                <span ng-show="showArrow"><i class="ion-chevron-right"></i></span>
+            </div>
+        </div>
+        <div ng-if="lastUpdated" class="last-updated">Latest Updated Speed</div>
+    </ion-content>
+</ion-view>

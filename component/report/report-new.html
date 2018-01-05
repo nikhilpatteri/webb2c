@@ -1,0 +1,49 @@
+<div class="row" style="height:70px;">
+        <div>
+            <div class="row">
+                <div class="col-md-3" style="padding-top:15px;">
+                    <label class="custom_label" style="color:grey;">Select Vehicle</label>
+                    <select id="selectGroup" class="form-control" style="height:25px;color:lightgrey;font-size:11px;" name="groupList"
+                        ng-model="deviceId" ng-change="plotVehicleIcon(deviceId)">
+                        <option ng-if="trackerList.length" value="" selected disabled
+                            class="disable_select">-- Select Vehicle - -</option>
+                        <option ng-if="!trackerList.length" selected disabled>No
+                            Vehicle Available</option>
+                        <option ng-repeat="tracker in trackerList"
+                            value="{{ tracker.devid }}">{{tracker.devid}}</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    Select Year
+                </div>
+                <div class="col-md-2">
+                    Select Month
+                </div>
+                <div class="col-md-2">
+                    <button class="btn">Submit</button>
+                </div>
+                <div class="col-md-1" style="padding-top:15px;">
+                    <img src="img/notification.png" style="height: 25px;float:right;">
+                </div>
+                <div class="col-md-2" style="padding-top:15px;">
+                    <label>My Account</label>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-sm-3" id="clearTextGroup"> -->
+                    <!-- <select id="selectGroup" class="form-control" style="height:25px;color:lightgrey;font-size:11px;" name="groupList"
+                        ng-model="deviceId" ng-change="plotVehicleIcon(deviceId)">
+                        <option ng-if="trackerList.length" value="" selected disabled
+                            class="disable_select">-- Select Vehicle - -</option>
+                        <option ng-if="!trackerList.length" selected disabled>No
+                            Vehicle Available</option>
+                        <option ng-repeat="tracker in trackerList"
+                            value="{{ tracker.devid }}">{{tracker.devid}}</option>
+                    </select>       -->
+                <!-- </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>

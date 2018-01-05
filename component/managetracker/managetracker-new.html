@@ -1,0 +1,37 @@
+<div class="row" style="height:70px;" ng-init="init()">
+        <div>
+            <div class="row">
+                <div class="col-md-9" style="padding-top:15px;">
+                    <p>Add Tracker</p>
+                    <button class="btn">Add</button>
+                </div>
+                <div class="col-md-1" style="padding-top:15px;">
+                    <img src="img/notification.png" style="height: 25px;float:right;">
+                </div>
+                <div class="col-md-2" style="padding-top:15px;">
+                    <label>My Account</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="padding:0px;">
+            <div class="row" ng-repeat="member in memberList track by $index" style="padding-top: 20px;padding-bottom: 20px;border-bottom: solid 1px lightgrey;border-top: solid 1px lightgrey;">
+                <div class="col-md-2">
+                    <span>{{$index+1}}</span><span style="padding-left:50px;">{{member.firstname}}</span>
+                </div>
+                <div class="col-md-1" style="padding:0px;">
+                    <p>{{member.contact_no}}</p>
+                </div>
+                <div class="col-md-3">
+                    <p>{{member.email}}</p>
+                </div>
+                <div class="col-md-1">
+                    <a ng-click="editMember(member.uid)" style="text-decoration: underline;color:blue;">Edit</a>
+                </div>
+                <div class="col-md-1">
+                    <a ng-click="deleteMember(member.uid)" style="text-decoration: underline;color:red;">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>

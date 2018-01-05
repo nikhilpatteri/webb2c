@@ -1,0 +1,65 @@
+<div class="row" style="height:70px;">
+    <div>
+        <div class="row">
+            <div class="col-md-9" style="padding-top:15px;">
+                <label class="custom_label" style="color:grey;">Select Vehicle</label>
+            </div>
+            <div class="col-md-1" style="padding-top:15px;">
+                <img src="img/notification.png" style="height: 25px;float:right;">
+            </div>
+            <div class="col-md-2" style="padding-top:15px;">
+                <label>My Account</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" id="clearTextGroup">
+                <select id="selectGroup" class="form-control" style="height:25px;color:lightgrey;font-size:11px;" name="groupList"
+                    ng-model="deviceId" ng-change="plotVehicleIcon(deviceId)">
+                    <option ng-if="trackerList.length" value="" selected disabled
+                        class="disable_select">-- Select Vehicle - -</option>
+                    <option ng-if="!trackerList.length" selected disabled>No
+                        Vehicle Available</option>
+                    <option ng-repeat="tracker in trackerList"
+                        value="{{ tracker.devid }}">{{tracker.devid}}</option>
+                </select>      
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="padding:0px;">
+        <div id="live_map" ng-style="mapHeight"></div>
+        <div class="row" ng-if="deviceId">
+            <div class="col-md-offset-3 col-md-6" style="border:1px solid lightgrey;box-shadow: 1px 1px 15px grey;background-color:#212022;position:fixed;top:75%;width:35%;border-radius:10px;height:175px;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img ng-src="{{data[0].vehicle_model=='bike' ? 'img/back_bike.png' : (data[0].vehicle_model=='truck' ? 'img/back_truck.png' :
+                        (data[0].vehicle_model=='bus' ? 'img/back_bus.png' : 'img/back_car.png'))}}" style="width:70px;padding-top: 25px;">
+                        
+                        
+                        <p style="color:grey;font-size:12px;">Status</p>
+                        <span class="ltwrap_type" ng-style="{{getColorBack(divcolor)}}"></span>
+                        <p class="ltstatusTxt" style="color:white;font-size:12px;">{{barTxt}}</p>
+                    </div>
+                    <div class="col-md-4" style="color:white;">
+                        <div>{{vehicleName}}</div>
+                        <div>{{vehicleNumber}}</div>
+                        <div>Tracker ID: {{deviceInfo.devid}}</div>
+                        <div>Tracker Sim Carrier: {{deviceInfo.sim_service_provider}}</div>
+                        <div>Tracker Sim Ph no: {{deviceInfo.device_sim_cn}}</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="chart">
+                            <div class="progress ng-cloak speed-text textInsideGauge largeFont">{{data[0].values.Velocity}}<br><span class="kmphSize">KmpH</span>
+                                <br><span class="acGreyFont kmphSize ">Latest Updated Speed</span></div>
+                            <round-progress max="100" current="data[0].values.Velocity" color="#45ccce" bgcolor="#eaeaea" radius="100" stroke="15" semi="true"
+                                rounded="true" clockwise="true" responsive="false" duration="800" aria-valuemin="0" aria-valuemax="100" animation="easeInOutQuart"
+                                animation-delay="0"></round-progress>
+                            <div id="widgetId2" class="vsdSolidGauge"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

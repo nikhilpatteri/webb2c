@@ -1,0 +1,65 @@
+.ehd{
+    border-bottom:1px solid #e7e7e7;
+}
+.ehdimageDiv{
+    width: 43px;
+    height: 43px;
+    border-radius: 25px;
+    background: green;
+    margin-top: 12px;
+    margin-left: 11px;
+}  
+
+.ehdimage{
+    width: 50px;
+    text-align: center;
+    margin-left: -8px;
+    margin-top: 5px;
+}     
+.buttonForHistor{
+       background-color: white;
+    border-color: #1fb6ff;
+    color: #1fb6ff;
+    border: 1px solid;
+    /* padding: 7px; */
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 6px;
+    font-size: 11px;
+}
+.redSpeed{
+    color:red !important;
+}
+.latlongStyle{
+    text-decoration: underline;
+    color: #1fb6ff;
+    font-size: 13px;
+}
+.leftPaddingZero{
+    padding-left: 0px !important;
+}
+.speedstyle{
+    color:red;
+}
+.ehdRow{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.ehDateFormat{
+    width: 75px;
+        padding: 0px !important;
+}
+
+.ehdRowCol{
+    display: -webkit-inline-box;
+}
+
+.ehdRowCol .col-md-12{
+    width: 100%;
+    display: inline-flex;
+}
+
+.ehdLatLonPopup .popup-body{
+    text-align: center
+}

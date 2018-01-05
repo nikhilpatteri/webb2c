@@ -1,0 +1,68 @@
+<ion-view view-title="Notification">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-arrow-left-c" ng-click="backToHistory()"></button>
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="right">
+         <a class="button button-icon button-clear " href="#/bats/notification" ><img class="filterWidth" src="img/notification.png"></a>
+    </ion-nav-buttons>-->
+    <ion-content class="lgBackgroundWhite" scroll="true">
+
+        <div class="ehd" ng-repeat="notif in notificationData">
+            <div class="row ehdRow ehdRowCol">
+
+                <div class="col col-20 marginLeft">
+                    <img class="ehdimage" ng-src="{{notif.alarm_type=='0' ? 'img/eventH/panic.png' :
+                                                    (notif.alarm_type=='1' ? 'img/eventH/sim-tamper.png' :
+                                                    (notif.alarm_type=='2' ? 'img/eventH/tamper-top.png' :
+                                                    (notif.alarm_type=='3' ? 'img/eventH/battery.png' :
+                                                    (notif.alarm_type=='4' ? 'img/eventH/overspeed.png' :
+                                                    (notif.alarm_type=='5' ? 'img/eventH/geofence.png' :
+                                                    (notif.alarm_type=='6' ? 'img/eventH/sanity.png' :
+                                                    (notif.alarm_type=='7' ? 'img/eventH/warning.png' :
+                                                    (notif.alarm_type=='8' ? 'img/eventH/theft.png' :
+                                                    (notif.alarm_type=='9' ? 'img/eventH/sim-tamper.png' :
+                                                    (notif.alarm_type=='10' ? 'img/eventH/invalid.png' : 'img/eventH/invalid.png'))))))))))}}">
+                </div>
+                <div class="col col-50">
+                    <!--<div class="row" ng-class="[chexkAlarmType(notif.alarm_type,notif.Velocity)]">{{alarmType}}-->
+                    <div class="row">
+                        <span ng-if="notif.alarm_type=='0'">Panic</span>
+                        <span ng-if="notif.alarm_type=='1'">Tamper Sim</span>
+                        <span ng-if="notif.alarm_type=='2'">Tamper Top</span>
+                        <span ng-if="notif.alarm_type=='3'">Battery Low</span>
+                        <span ng-if="notif.alarm_type=='4'">Overspeed</span>
+                        <span ng-if="notif.alarm_type=='5'">Geofence</span>
+                        <span ng-if="notif.alarm_type=='6'">Sanity alarm</span>
+                        <span ng-if="notif.alarm_type=='7'">Connection to tracker interrupted</span>
+                        <span ng-if="notif.alarm_type=='8'">Vehicle Moved / Theft</span>
+                        <span ng-if="notif.alarm_type=='9'">Tracker sim changed</span>
+                        <span ng-if="notif.alarm_type=='10'">Warning</span>
+                        <!--<div class="row latlongStyle" ng-click="showAlert(event.lat,event.long)">
+                            {{event.lat}} , {{event.long}}-->
+                    </div>
+                    <div class="row ">
+                        <!--<div class="" ng-class="[chexkAlarmType(event.alarm_type)]">{{alarmType}}</div>-->
+                        <div class="leftPaddingZero acSmallFonts">{{notif.vehicle_name}}| {{notif.vehicle_num}}</div>
+                    </div>
+                    <div class="row ">
+                        <!--<div class="" ng-class="[chexkAlarmType(event.alarm_type)]">{{alarmType}}</div>-->
+                        <div class="leftPaddingZero  acSmallFonts" ng-class="{'redSpeed': notif.alarm_type=='4'}">{{notif.Velocity}} KmpH</div>
+                    </div>
+                </div>
+                <div class="col col-30">
+                    <div class=" acSmallFonts acGreyFont ehDateFormat">
+                        {{notif.ts | date:' HH:mm, d MMMM '}}
+                    </div>
+                    <div class="">
+                        <button ng-click="showAlert(notif.lat,notif.long)" class="buttonForHistor ">Location</button>
+                    </div>
+                </div>
+            </div>
+            <!---->
+        </div>
+        <div ng-if="noData" class="alignCenter">
+            <img class="imageCss" src="img/no-data.png">
+            <div class="ngdata">No Data Availble</div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,45 @@
+<ion-view view-title="Report">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+         <div  ng-include="'component/notificationbell/notificationbell.html'"></div>
+        <!--<a class="button button-icon button-clear " href="#/bats/notification"><img class="filterWidth" src="img/notification.png">
+       
+        <span class="badge badge-dark badgePosition"  ng-class="{'badgePositionHide':count=='0','badgePosition':count!='0'}">{{count}}</span></a>-->
+    </ion-nav-buttons>
+    <ion-content class="lgBackgroundWhite">
+        <div class="commonLeftMargin">
+            <div class="containerLogin">
+                <div class="LoginHeading">
+                    <form name="ReportForm">
+                        <div ng-show="data.selectedvehicle" class="floatlabeltxt show-hide inputFieldFontSize">Select Vehicle</div>
+                        <select ng-model="data.selectedvehicle" class="dropdown" name="selectedvehicle" required ng-options="v.vehicle_num for v in deviceList"
+                            ng-class="{error: signupStep1Form.selectedvehicle.$invalid && Validate}">
+                            <option value=""disabled selected>Select Vehicle</option>
+                             </select>
+                        <div class="space1">
+                            <div ng-show="data.year" class="floatlabeltxt show-hide inputFieldFontSize">Select Year</div>
+                            <select ng-model="data.year" class="dropdown" name="selectedstate" required placeholder="State" 
+                            ng-options="x for x in years"
+                                ng-class="{error: signupStep1Form.form.selectedstate.$invalid && Validate}">
+                           <option value=""disabled selected> Select Year</option> </select>
+                        </div>
+                        <div class="space1">
+                            <div ng-show="data.month" class="floatlabeltxt show-hide inputFieldFontSize">Select Month</div>
+                            <select ng-model="data.month" class="dropdown" value="data.id" name="selectedstate" required placeholder="State" 
+                            ng-options="x.month for x in months"
+                                ng-class="{error: signupStep1Form.form.selectedstate.$invalid && Validate}">
+                           <option value=""disabled selected>Select Month</option> </select>
+                        </div>
+                    </form>
+                </div>
+                <button ng-click="gotoReport(data,ReportForm)"  ng-disabled="ReportForm.$invalid" class="button button-balanced stButton btnMaarginTop1">Download</button>
+            </div>
+        </div>
+
+    </ion-content>
+    <!--<div class="bar bar-footer bar-balanced">
+        <div class="title">Footer</div>
+    </div>-->
+</ion-view>

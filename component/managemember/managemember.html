@@ -1,0 +1,39 @@
+<ion-view view-title="Manage Member">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+     <ion-nav-buttons side="right">
+          <div  ng-include="'component/notificationbell/notificationbell.html'"></div>
+      <!--<a class="button button-icon button-clear " href="#/bats/notification" ><img class="filterWidth" src="img/notification.png">
+      <span class="badge badge-dark badgePosition"  ng-class="{'badgePositionHide':count=='0','badgePosition':count!='0'}">{{count}}</span></a>-->
+    </ion-nav-buttons>
+    <ion-content class="hmCards" scroll="true" ng-init="init();">
+        <div class="card md-list" ng-repeat="member in memberList">
+            <div class="row mmMargin acGreyFont">
+                <div class="col col-90"> Member {{$index+1}}</div>
+                <div class="col col-10 center-text acSmallFonts acVehicleCompany" ng-click="openPopover($event, member)">
+                    <i class="ion-android-more-vertical edit-member-icon"></i>
+                </div>
+            </div>
+            <div class="row acRemoveMargin leftMargin ">
+                <div class="leftMargin" ><b>{{member.firstname}} {{member.lastname}}</b></div>
+                <!--<div class="col-md-2 acSmallFonts acGreyFont">{{tracker.device_sim_cn}}</div>
+                <img class="batsIcon acEditIcon alignRight" src="img/pencil.png" />-->
+            </div>
+            <div class="row">
+                <div class="col col-90  acSmallFonts leftMargin1 ">{{member.email}}</div>
+                
+            </div>
+            <div class="row">
+                <div class="col col-100 acSmallFonts leftMargin1 lineheight">{{member.contact_no}}</div>
+            </div>
+        </div>
+        <div class="addmemberButton">
+            <div class="suTrackerCard suAddTrackerDiv" ng-class="{'disableDivForTransparent': memberList.length>2}" 
+                ng-click="addNewMember()">
+                <i class="ion-ios-plus-empty suAddTrackerIcon"></i>Add Member
+                <div class="addMemberSubTitle acSmallFonts acGreyFont ">You can add upto 3 Member</div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

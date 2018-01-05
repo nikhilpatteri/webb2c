@@ -1,0 +1,34 @@
+<ion-view view-title="Replay Route" ng-init="initialize()">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-arrow-left-c" ng-click="backToReplayRoute()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+         <div  ng-include="'component/notificationbell/notificationbell.html'"></div>
+        <!--<a class="button button-icon button-clear " href="#/bats/notification" ><img class="filterWidth" src="img/notification.png">
+        <span class="badge badge-dark badgePosition" ng-class="{'badgePositionHide':count=='0','badgePosition':count!='0'}">{{count}}</span></a>-->
+    </ion-nav-buttons>
+    <ion-content class="hmCards" >
+        <div class="umdHeaderIconsVehicle lgBackgroundWhite acSmallFonts acGreyFont">Please select the time slot</div>
+        <ion-list class="rrdIonList" ng-style=" timeSlots.data == false && { 'background-color': '#eaeaea' }">
+            <ion-radio class="rrdRadioLabels" ng-repeat="timeSlot in timeSlots" ng-disabled="!timeSlot.data" ng-class="!timeSlot.data ? 'halfOpacity' : 'zeroOpacity'"
+              ng-model="data.timeSlot" ng-value="timeSlot" ng-click="getHistory(timeSlot)">
+                <div class="acSmallFonts">{{timeSlot.sts | date:'HH:mm'}}</div>
+                <div class="acSmallFonts">to</div>
+                <div class="acSmallFonts">{{timeSlot.ets | date:'HH:mm'}}</div>
+            </ion-radio>
+        </ion-list>
+        <div id="replay_map" ng-style="mapHeight"></div>
+        <div ng-show="showReplayMenu" class="rrdspeedCtrlSection row">
+            <div class="col col-25">
+                <img src="img/play.png" class="rrimages" ng-if="play && !end" ng-click="updateSpeed(4);" style="float:right;">
+                <img src="img/pause.png" class="rrimages" ng-if="!play && !end"  ng-click="updateSpeed(3);" style="float:right;">
+            </div>
+            <div class="col col-25">
+                <img src="img/replay.png" class="rrimages" ng-click="getHistory(replaySlot)">
+            </div>
+            <div class="col col-50 center_content">
+                <select ng-model="data.selectedOption" required ng-options="option.value as option.name for option in availableOptions" ng-change="updateSpeed(data.selectedOption)" style="width:100%;background-color:white;"></select>
+            </div>
+        </div> 
+    </ion-content>
+</ion-view>
